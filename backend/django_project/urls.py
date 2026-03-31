@@ -14,26 +14,34 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+
 from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from django.http import JsonResponse
 
+
 def api_root(request):
     return JsonResponse({
         "message": "Welcome to FixMyResume API",
         "status": "Running",
         "endpoints": {
-            "auth": "/api/auth/",
-            "admin": "/admin/"
+            "auth":     "/api/auth/",
+            "analyze":  "/api/analyzer/analyze/",
+            "analyses": "/api/analyzer/analyses/",
+            "rewrite":  "/api/analyzer/rewrite/",
+            "dashboard":"/api/analyzer/dashboard/",
+            "admin":    "/admin/"
         }
     })
 
+
 urlpatterns = [
-    path('', api_root, name='api-root'),  # root path
-    path('admin/', admin.site.urls),
-    path('api/auth/', include('accounts.urls')),
+    path('',        api_root,                        name='api-root'),
+    path('admin/',  admin.site.urls),
+    path('api/auth/',     include('accounts.urls')),
+    path('api/analyzer/', include('analyzer.urls')),  # ← new
 ]
 
 if settings.DEBUG:

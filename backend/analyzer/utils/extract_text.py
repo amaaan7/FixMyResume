@@ -5,7 +5,7 @@ import io
 def extract_text_from_pdf(file):
     text = ""
     try:
-        reader = PyPDF2.PdfReader(file):
+        reader = PyPDF2.PdfReader(file)
         for page in reader.pages:
             page_text = page.extract_text()
             if page_text:
