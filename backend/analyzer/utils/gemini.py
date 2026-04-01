@@ -1,20 +1,12 @@
-import google.generativeai as genai
+from google import genai
 import os
 import json
 import re
 
-
-# Configure Gemini with your API key
-genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
-model = genai.GenerativeModel("gemini-1.5-flash")
+client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
 
 
 def analyze_resume(resume_text, job_description):
-    """
-    Send resume + job description to Gemini.
-    Returns a structured dict with scores, keywords, feedback.
-    """
-
     prompt = f"""
 You are an expert ATS (Applicant Tracking System) analyst and career coach.
 
@@ -61,15 +53,17 @@ JOB DESCRIPTION:
 """
 
     try:
-        response = model.generate_content(prompt)
+        response = client.models.generate_content(
+            model="gemini-3.1-flash-lite-preview",
+            contents=prompt
+        )
         raw_text = response.text.strip()
 
-        # Remove markdown code blocks if Gemini adds them anyway
+        # Remove markdown code blocks if Gemini adds them
         raw_text = re.sub(r'```json\s*', '', raw_text)
         raw_text = re.sub(r'```\s*', '', raw_text)
         raw_text = raw_text.strip()
 
-        # Parse JSON
         result = json.loads(raw_text)
         return result
 
@@ -80,11 +74,6 @@ JOB DESCRIPTION:
 
 
 def rewrite_bullet(original_text, job_description):
-    """
-    Takes a weak bullet point and rewrites it to be stronger.
-    Returns the rewritten text as a string.
-    """
-
     prompt = f"""
 You are an expert resume writer.
 
@@ -102,7 +91,11 @@ Job description context: {job_description[:500]}
 """
 
     try:
-        response = model.generate_content(prompt)
+        response = client.models.generate_content(
+            model="gemini-3.1-flash-lite-preview",
+            contents=prompt
+        )
         return response.text.strip()
     except Exception as e:
         raise ValueError(f"Gemini API error: {str(e)}")
+

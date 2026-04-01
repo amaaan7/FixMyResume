@@ -39,9 +39,9 @@ def extract_text(file, filename):
 
     filename_lower = filename.lower()
 
-    if filename+lower.endswith('.pdf'):
+    if filename_lower.endswith('.pdf'):
         return extract_text_from_pdf(file)
-    elif filename+lower.endswith('.docx'):
+    elif filename_lower.endswith('.docx'):
         return extract_text_from_docx(file)
     elif filename_lower.endswith('.doc'):
         raise ValueError("Old .doc format not supported. Please save as .docx")
