@@ -9,7 +9,7 @@ export default {
     extend: {
       colors: {
         primary: {
-          50:  '#eef2ff',
+          50: '#eef2ff',
           100: '#e0e7ff',
           200: '#c7d2fe',
           300: '#a5b4fc',
@@ -22,7 +22,7 @@ export default {
           950: '#1e1b4b',
         },
         accent: {
-          50:  '#f5f3ff',
+          50: '#f5f3ff',
           100: '#ede9fe',
           200: '#ddd6fe',
           300: '#c4b5fd',
@@ -35,7 +35,7 @@ export default {
           950: '#2e1065',
         },
         dark: {
-          50:  '#f8fafc',
+          50: '#f8fafc',
           100: '#f1f5f9',
           200: '#e2e8f0',
           300: '#cbd5e1',
