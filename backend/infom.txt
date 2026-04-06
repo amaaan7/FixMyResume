@@ -2,3 +2,5 @@ Create virtual environment
 (python -m venv .venv)
 
 .venv\Scripts\activate.bat
+
+npm run dev

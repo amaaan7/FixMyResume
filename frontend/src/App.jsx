@@ -9,6 +9,7 @@ import Navbar from './components/layout/Navbar';
 
 // 2. Import Pages (We only have Landing right now)
 import Landing from './pages/Landing';
+import LoginPage from './pages/LoginPage';
 
 // --- Temporary Placeholders ---
 // To prevent the app from crashing while we build, these are temporary dummy pages.
@@ -16,7 +17,6 @@ import Landing from './pages/Landing';
 const AnalyzePage = () => <div className="p-10 text-center text-xl mt-10">Analyze Page (Coming Soon)</div>;
 const ResultsPage = () => <div className="p-10 text-center text-xl mt-10">Results Page (Coming Soon)</div>;
 const DashboardPage = () => <div className="p-10 text-center text-xl mt-10">Dashboard (Coming Soon)</div>;
-const LoginPage = () => <div className="p-10 text-center text-xl mt-10">Login (Coming Soon)</div>;
 const RegisterPage = () => <div className="p-10 text-center text-xl mt-10">Register (Coming Soon)</div>;
 
 // --- 3. Protected Route Wrapper ---
