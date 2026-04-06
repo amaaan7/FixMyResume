@@ -116,9 +116,24 @@ export default function RegisterPage() {
           </div>
 
           {/* Submit Button */}
+          <button
+            type='submit'
+            disabled={isLoading}
+            className='w-full flex items-center justify-center gap-2 py-3 px-4 bg-gradient-primary hover:shadow-glow text-white font-medium rounded-xl transition-all duration-300 disabled:opacity-70 disabled:cursor-not-allowed group mt-4'
+          >
+            {isLoading ? 'Creating Account...' : 'Create Account'}
+            {!isLoading && <ArrowRight className='w-4 h-4 group-hover:translate-x-1 transition-transform' />}
+          </button>
         </form>
-      </div>
 
+        {/* Switch to Login link */}
+        <div className="mt-8 text-center text-sm text-dark-500 dark:text-dark-400">
+          Already have an account?{' '}
+          <Link to="/login" className="font-medium text-primary-600 dark:text-primary-400 hover:underline">
+            Log in
+          </Link>
+        </div>
+      </div>
     </div>
   )
 }
