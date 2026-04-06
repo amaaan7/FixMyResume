@@ -72,13 +72,48 @@ export default function AnalyzePage() {
                             <FileDropzone onFileSelect={(selectedFile) => setFile(selectedFile)} />
                         </div>
 
+                        {/* Right Side: Job Description */}
+                        <div className="space-y-4 flex flex-col">
+                            <div className="flex items-center gap-2 text-dark-900 dark:test-white font-semibold">
+                                <Briefcase className="w-5 h-5 text-primary-500" />
+                                <h3>2. Paste Job Description</h3>
+                            </div>
+                            <p className="text-sm text-dark-500 dark:text-dark-400" >
+                                Copy and paste the full job description here.
+                            </p>
+
+                            <textarea
+                                className="flex-1 w-full p-4 rounded-2xl bg-dark-50 dark:bg-dark-900 border border-dark-200 dark:border-dark-700 text-dark-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all outline-none resize-none min-h-[240px]"
+                                placeholder='We are looking for a Software Engineer with 3+ years of experience in React, Node.js, and Python...'
+                                value={jobDescription}
+                                onChange={(e) => setJobDescription(e.target.value)}
+                            />
+                        </div>
 
                     </div>
 
+                    {/* Bottom Area: Submit Button */}
+                    <div className="mt-8 pt-8 border-t border-dark-100 dark:border-dark-700 flex justify-center">
+                        <button
+                            onClick={handleAnalyze}
+                            disabled={isLoading}
+                            className="w-full md:w-auto px-12 py-4 bg-gradient-primary hover:shadow-glow text-white font-bold rounded-xl transition-all duration-300 disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-3 text-lg"
+                        >
+                            {isLoading ? (
+                                <>
+                                    <Loader2 className="w-6 h-6 animate-spin" />
+                                    Analyzing with AI... (Takes ~10 seconds)
+                                </>
+                            ) : (
+                                <>
+                                    <Sparkles className="w-6 h-6" />
+                                    Analyze Application
+                                </>
+                            )}
+                        </button>
+                    </div>
                 </div>
-
             </div>
-
         </div>
     )
 }
