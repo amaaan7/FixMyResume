@@ -11,11 +11,11 @@ import Navbar from './components/layout/Navbar';
 import Landing from './pages/Landing';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
+import AnalyzePage from './pages/AnalyzePage';
 
 // --- Temporary Placeholders ---
 // To prevent the app from crashing while we build, these are temporary dummy pages.
 // We will replace these with real imports in the upcoming steps!
-const AnalyzePage = () => <div className="p-10 text-center text-xl mt-10">Analyze Page (Coming Soon)</div>;
 const ResultsPage = () => <div className="p-10 text-center text-xl mt-10">Results Page (Coming Soon)</div>;
 const DashboardPage = () => <div className="p-10 text-center text-xl mt-10">Dashboard (Coming Soon)</div>;
 
