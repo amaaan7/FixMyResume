@@ -63,6 +63,27 @@ export default function RegisterPage() {
 
         {/* The Form */}
         <form onSubmit={handleSubmit} className="space-y-5">
+          {/* Full Name */}
+          <div className='space-y-1.5'>
+            <label className="text-sm font-medium text-dark-700 dark:text-dark-300 ml-1">
+              Full Name
+            </label>
+            <div className='relative'>
+              <User className='absolute left-3.5 top-1/2 -translate-y-1/2 w-5 h-5 text-dark-400' />
+              <input
+                type="text"
+                required
+                className='w-full pl-11 pr-4 py-3 bg-dark-50 dark:bg-dark-900 border
+                border-dark-200 dark:border-dark-700 rounded-xl text-dark-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent tansition-all outline-none'
+                placeholder='Your Name'
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              />
+
+            </div>
+
+          </div>
+
 
         </form>
       </div>
