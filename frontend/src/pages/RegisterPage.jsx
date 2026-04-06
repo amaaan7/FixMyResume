@@ -23,12 +23,15 @@ export default function RegisterPage() {
       navigate('/analyze')
     } catch (err) {
       if (err.response && err.response.data) {
-        const backendErrors = Object.keys(backendErrors)[0];
-        setError(backendErrors[firstErrorKey]);
+        const errorData = err.response.data;
+        // Safely extract the first error message from Django
+        const firstKey = Object.keys(errorData)[0];
+        setError(errorData[firstKey]);
       } else {
-        setError("Registration failed. Please Check your connection.")
+        setError("Registration failed. Please check your connection.")
       }
     } finally {
+
       setIsLoading(false)
     }
   }
@@ -87,7 +90,7 @@ export default function RegisterPage() {
             <label className="text-sm font-medium text-dark-700 dark:text-dark-300 ml-1">Email
             </label>
             <div className='relative'>
-              <Mail className='absolute left-3.5 top-1/2 -tanslate-y-1/2 w-5 h-5 text-dark-400' />
+              <Mail className='absolute left-3.5 top-1/2 -translate-y-1/2 w-5 h-5 text-dark-400' />
               <input
                 type="email"
                 className='w-full pl-11 pr-4 py-3 bg-dark-50 dark:bg-dark-900 border border-dark-200 dark:border-dark-700 rounded-xl text-dark-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all outline-none'
@@ -104,7 +107,7 @@ export default function RegisterPage() {
               password
             </label>
             <div className='relative'>
-              <lock className='absolute left-3.5 top-1/2 -translate-y-1/2 w-5 h-5 text-dark-400' />
+              <Lock className='absolute left-3.5 top-1/2 -translate-y-1/2 w-5 h-5 text-dark-400' />
               <input
                 type="password"
                 required
