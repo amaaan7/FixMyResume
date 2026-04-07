@@ -13,11 +13,12 @@ import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import AnalyzePage from './pages/AnalyzePage';
 import ResultsPage from './pages/ResultsPage';
+import DashboardPage from './pages/DashboardPage';
 
 // --- Temporary Placeholders ---
 // To prevent the app from crashing while we build, these are temporary dummy pages.
 // We will replace these with real imports in the upcoming steps!
-const DashboardPage = () => <div className="p-10 text-center text-xl mt-10">Dashboard (Coming Soon)</div>;
+
 
 // --- 3. Protected Route Wrapper ---
 // This acts as a security guard for routes.
