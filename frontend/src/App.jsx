@@ -12,11 +12,11 @@ import Landing from './pages/Landing';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import AnalyzePage from './pages/AnalyzePage';
+import ResultsPage from './pages/ResultsPage';
 
 // --- Temporary Placeholders ---
 // To prevent the app from crashing while we build, these are temporary dummy pages.
 // We will replace these with real imports in the upcoming steps!
-const ResultsPage = () => <div className="p-10 text-center text-xl mt-10">Results Page (Coming Soon)</div>;
 const DashboardPage = () => <div className="p-10 text-center text-xl mt-10">Dashboard (Coming Soon)</div>;
 
 // --- 3. Protected Route Wrapper ---
@@ -55,7 +55,7 @@ function App() {
 
                     {/* Protected routes */}
                     <Route path="/analyze" element={<ProtectedRoute><AnalyzePage /></ProtectedRoute>} />
-                    <Route path="/results" element={<ProtectedRoute><ResultsPage /></ProtectedRoute>} />
+                    <Route path="/results/:id" element={<ProtectedRoute><ResultsPage /></ProtectedRoute>} />
                     <Route path="/dashboard" element={<ProtectedRoute><DashboardPage /></ProtectedRoute>} />
                 </Routes>
             </div>

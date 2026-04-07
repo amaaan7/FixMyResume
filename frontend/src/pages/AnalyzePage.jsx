@@ -25,8 +25,35 @@ export default function AnalyzePage() {
         setError(null)
         setIsLoading(true)
 
+        // 2. Prepare the data to be sent
+        // When sending files, we MUST use FormData instead of a regular JSON object
+        const formData = new FormData()
+        formData.append('resume_file', file)
+        formData.append('job_description', jobDescription)
 
+        try {
+            // 3. Send to your Django backend endpoint (adjust the URL if your backend uses a different endpoint)
+            const response = await api.post('/api/analyzer/analyze/', formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                },
+            })
+
+            // 4. Success! We get the new resume ID from Django and go to the Results page
+            // Adjust response.data.id depending on what your Django model returns
+            const newResumeId = response.data.id
+            navigate(`/results/${newResumeId}`)
+
+        } catch (err) {
+            console.error("Upload error details:", err)
+            // Show a friendly error to the user
+            setError(err.response?.data?.error || "We encountered an error while analyzing. Please check if the backend is running.")
+        } finally {
+            // Stop the spinning loader whether it succeeded or failed
+            setIsLoading(false)
+        }
     }
+
 
     return (
         <div className="min-h-screen pt-24 pb-12 px-4">
