@@ -10,7 +10,7 @@
 @layer base {
   body {
     @apply font-sans antialiased;
-    @apply bg-white text-dark-900;
+    @apply bg-dark-50 text-dark-900;
     @apply dark:bg-dark-900 dark:text-dark-100;
     @apply transition-colors duration-300;
   }

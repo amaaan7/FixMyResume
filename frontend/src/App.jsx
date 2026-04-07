@@ -42,7 +42,7 @@ function App() {
         // Wrap everything in AuthProvider so the whole app knows who is logged in!
         <AuthProvider>
             {/* Global styling for the overall app wrapper */}
-            <div className="min-h-screen bg-white dark:bg-dark-900 text-dark-900 dark:text-dark-100 font-sans selection:bg-primary-500 selection:text-white pb-10 transition-colors duration-300">
+            <div className="min-h-screen bg-dark-50 dark:bg-dark-900 text-dark-900 dark:text-dark-100 font-sans selection:bg-primary-500 selection:text-white pb-10 transition-colors duration-300">
 
                 {/* Navbar is outside of <Routes> so it exists on EVERY page */}
                 <Navbar />

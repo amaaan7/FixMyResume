@@ -1,11 +1,12 @@
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { 
-  FileSearch, 
-  Target, 
-  PenTool, 
-  Upload, 
-  Sparkles, 
+import { useAuth } from '../context/AuthContext'
+import {
+  FileSearch,
+  Target,
+  PenTool,
+  Upload,
+  Sparkles,
   TrendingUp,
   ArrowRight,
   Zap,
@@ -24,6 +25,7 @@ const stagger = {
 }
 
 export default function Landing() {
+  const { isAuthenticated } = useAuth();
   return (
     <div className="overflow-hidden">
       {/* ===================== HERO SECTION ===================== */}
@@ -65,8 +67,8 @@ export default function Landing() {
               variants={fadeInUp}
               className="text-lg sm:text-xl text-dark-500 dark:text-dark-400 max-w-2xl mx-auto mb-10 leading-relaxed"
             >
-              Upload your resume, paste a job description, and get instant AI-powered feedback. 
-              Boost your ATS score, find missing keywords, and rewrite weak bullet points — 
+              Upload your resume, paste a job description, and get instant AI-powered feedback.
+              Boost your ATS score, find missing keywords, and rewrite weak bullet points —
               all in under 5 seconds.
             </motion.p>
 
@@ -80,13 +82,15 @@ export default function Landing() {
                 Analyze My Resume
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Link>
-              <Link
-                to="/register"
-                className="btn-secondary text-lg !px-8 !py-4"
-                id="cta-signup"
-              >
-                Create Free Account
-              </Link>
+              {!isAuthenticated && (
+                <Link
+                  to="/register"
+                  className="btn-secondary text-lg !px-8 !py-4"
+                  id="cta-signup"
+                >
+                  Create Free Account
+                </Link>
+              )}
             </motion.div>
 
             {/* Trust indicators */}
@@ -293,7 +297,7 @@ export default function Landing() {
                 Ready to <span className="gradient-text">Fix Your Resume?</span>
               </motion.h2>
               <motion.p variants={fadeInUp} className="text-dark-500 dark:text-dark-400 max-w-lg mx-auto mb-8">
-                Join thousands of job seekers who improved their resumes with AI. 
+                Join thousands of job seekers who improved their resumes with AI.
                 It's free, fast, and private.
               </motion.p>
               <motion.div variants={fadeInUp}>
