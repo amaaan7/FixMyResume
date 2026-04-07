@@ -87,7 +87,7 @@ export default function AnalyzePage() {
 
                         {/* Left Side: Drag & Drop */}
                         <div className="space-y-4">
-                            <div className="flex items-center gap-2 text-dark-900 dark:test-white font-semibold">
+                            <div className="flex items-center gap-2 text-dark-900 dark:text-white font-semibold">
                                 <FileText className="w-5 h-5 text-primary-500" />
                                 <h3>1. Upload Resume</h3>
                             </div>

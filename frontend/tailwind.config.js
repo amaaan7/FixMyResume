@@ -68,6 +68,7 @@ export default {
         'fade-in': 'fadeIn 0.5s ease-out',
         'slide-up': 'slideUp 0.5s ease-out',
         'slide-down': 'slideDown 0.3s ease-out',
+        'fade-in-up': 'slideUp 0.6s ease-out',
         'pulse-slow': 'pulse 3s infinite',
         'float': 'float 6s ease-in-out infinite',
       },

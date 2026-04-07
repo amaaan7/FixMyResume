@@ -39,7 +39,7 @@ export default function RegisterPage() {
   return (
     <div className='min-h-screen flex items-center justify-center pt-20 px-4'>
       {/* Glossy Card Container */}
-      <div className='w-full max-w-md bg-white dark:bg-dark-800 rounded-2x1 shadow-x1 border border-dark-100 dark:border-dark-700 p-8 transform transition-all duration-300'>
+      <div className='w-full max-w-md bg-white dark:bg-dark-800 rounded-2xl shadow-xl border border-dark-100 dark:border-dark-700 p-8 transform transition-all duration-300'>
 
         {/* Header Section */}
         <div className='text-center mb-8'>
@@ -76,8 +76,7 @@ export default function RegisterPage() {
               <input
                 type="text"
                 required
-                className='w-full pl-11 pr-4 py-3 bg-dark-50 dark:bg-dark-900 border
-                border-dark-200 dark:border-dark-700 rounded-xl text-dark-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent tansition-all outline-none'
+                className='border-dark-200 dark:border-dark-700 rounded-xl text-dark-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all outline-none'
                 placeholder='Your Name'
                 value={name}
                 onChange={(e) => setName(e.target.value)}
@@ -104,7 +103,7 @@ export default function RegisterPage() {
           {/* Password */}
           <div className='space-y-1.5'>
             <label className="text-sm font-medium text-dark-700 dark:text-dark-300 ml-1">
-              password
+              Password
             </label>
             <div className='relative'>
               <Lock className='absolute left-3.5 top-1/2 -translate-y-1/2 w-5 h-5 text-dark-400' />

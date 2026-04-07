@@ -5,6 +5,8 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 // 1. Import our AuthContext and Navbar
 import { AuthContext, AuthProvider } from './context/AuthContext';
 import Navbar from './components/layout/Navbar';
+import Footer from './components/layout/Footer';
+
 // We will update Navbar in the next step
 
 // 2. Import Pages (We only have Landing right now)
@@ -59,6 +61,8 @@ function App() {
                     <Route path="/results/:id" element={<ProtectedRoute><ResultsPage /></ProtectedRoute>} />
                     <Route path="/dashboard" element={<ProtectedRoute><DashboardPage /></ProtectedRoute>} />
                 </Routes>
+
+                <Footer />
             </div>
         </AuthProvider>
     );
