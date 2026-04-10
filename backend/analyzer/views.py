@@ -60,12 +60,14 @@ def analyze_view(request):
         )
 
     # --- 5. Save to database ---
-    # reset file pointer before saving
-    resume_file.seek(0)
+    # NOTE: We do NOT save the resume file to disk.
+    # Vercel (and most serverless platforms) have a read-only filesystem,
+    # so file uploads can't be persisted. We already have resume_text,
+    # which is all we need for analysis.
 
     analysis = ResumeAnalysis.objects.create(
         user             = request.user if request.user.is_authenticated else None,
-        resume_file      = resume_file,
+        resume_file      = None,  # skip file storage — serverless filesystem is read-only
         resume_text      = resume_text,
         job_description  = job_description,
         match_score      = ai_result.get('match_score', 0),
