@@ -1,7 +1,7 @@
 import { useState, useContext, use } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../context/AuthContext'
-import { FileText, User, Mail, Lock, ArrowRight, AlertCircle } from 'lucide-react'
+import { FileText, User, Mail, Lock, ArrowRight, AlertCircle, Loader2 } from 'lucide-react'
 
 export default function RegisterPage() {
   const [name, setName] = useState('')
@@ -76,7 +76,7 @@ export default function RegisterPage() {
               <input
                 type="text"
                 required
-                className='border-dark-200 dark:border-dark-700 rounded-xl text-dark-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all outline-none'
+                className='w-full pl-11 pr-4 py-3 bg-dark-50 dark:bg-dark-900 border border-dark-200 dark:border-dark-700 rounded-xl text-dark-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all outline-none'
                 placeholder='Your Name'
                 value={name}
                 onChange={(e) => setName(e.target.value)}
@@ -110,7 +110,7 @@ export default function RegisterPage() {
               <input
                 type="password"
                 required
-                className='w-full pl-11 pr-4 py-3 bg-dark-50 dark:text-dark-900 border border-dark-200 dark:border-dark-700 rounded-xl text-dark-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all outline-none'
+                className='w-full pl-11 pr-4 py-3 bg-dark-50 dark:bg-dark-900 border border-dark-200 dark:border-dark-700 rounded-xl text-dark-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all outline-none'
                 placeholder='********'
                 value={password}
                 onChange={(e) => setPassword(e.target.value)} />
@@ -123,8 +123,17 @@ export default function RegisterPage() {
             disabled={isLoading}
             className='w-full flex items-center justify-center gap-2 py-3 px-4 bg-gradient-primary hover:shadow-glow text-white font-medium rounded-xl transition-all duration-300 disabled:opacity-70 disabled:cursor-not-allowed group mt-4'
           >
-            {isLoading ? 'Creating Account...' : 'Create Account'}
-            {!isLoading && <ArrowRight className='w-4 h-4 group-hover:translate-x-1 transition-transform' />}
+            {isLoading ? (
+              <>
+                <Loader2 className="w-5 h-5 animate-spin" />
+                <span>Creating Account...</span>
+              </>
+            ) : (
+              <>
+                <span>Create Account</span>
+                <ArrowRight className='w-4 h-4 group-hover:translate-x-1 transition-transform' />
+              </>
+            )}
           </button>
         </form>
 

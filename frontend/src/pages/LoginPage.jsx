@@ -1,7 +1,7 @@
 import { useState, useContext } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../context/AuthContext'
-import { FileText, Mail, Lock, ArrowRight, AlertCircle } from 'lucide-react'
+import { FileText, Mail, Lock, ArrowRight, AlertCircle, Loader2 } from 'lucide-react'
 
 export default function LoginPage() {
     const [email, setEmail] = useState('')
@@ -78,14 +78,14 @@ export default function LoginPage() {
                                 required
                                 className='w-full pl-11 pr-4 py-3 bg-dark-50 dark:bg-dark-900 border border-dark-200 dark:border-dark-700 rounded-xl text-dark-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all outline-none'
                                 value={email}
-                                onChangeCapture={(e) => setEmail(e.target.value)}
+                                onChange={(e) => setEmail(e.target.value)}
                             />
                         </div>
                     </div>
 
                     {/* Password */}
                     <div className='space-y-1.5'>
-                        <label className='text-sm font-medium text-dark-700 dark:text-dark-300 m1-1'>Password</label>
+                        <label className='text-sm font-medium text-dark-700 dark:text-dark-300 ml-1'>Password</label>
                         <div className='relative'>
                             <Lock className='absolute left-3.5 top-1/2 -translate-y-1/2 w-5 h-5 text-dark-400' />
                             <input
@@ -107,8 +107,17 @@ export default function LoginPage() {
                         className="w-full flex items-center justify-center gap-2 py-3 px-4 bg-gradient-primary hover:shadow-glow text-white font-medium rounded-xl transition-all duration-300 disabled:opacity-70 disabled:cursor-not-allowed group mt-2"
 
                     >
-                        {isLoading ? 'Authenticating...' : 'Log In'}
-                        {!isLoading && <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />}
+                        {isLoading ? (
+                            <>
+                                <Loader2 className="w-5 h-5 animate-spin" />
+                                <span>Authenticating...</span>
+                            </>
+                        ) : (
+                            <>
+                                <span>Log In</span>
+                                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                            </>
+                        )}
                     </button>
                 </form>
 
