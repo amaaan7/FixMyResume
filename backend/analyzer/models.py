@@ -12,9 +12,6 @@ class ResumeAnalysis(models.Model):
                            related_name='analyses'
                        )
 
-    # the uploaded resume file
-    resume_file      = models.FileField(upload_to='resumes/', null=True, blank=True)
-
     # extracted plain text from the resume
     resume_text      = models.TextField()
 

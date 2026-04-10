@@ -67,7 +67,6 @@ def analyze_view(request):
 
     analysis = ResumeAnalysis.objects.create(
         user             = request.user if request.user.is_authenticated else None,
-        resume_file      = None,  # skip file storage — serverless filesystem is read-only
         resume_text      = resume_text,
         job_description  = job_description,
         match_score      = ai_result.get('match_score', 0),
