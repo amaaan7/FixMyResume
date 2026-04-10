@@ -1,8 +1,11 @@
 import axios from 'axios';
 
+// Grab the API URL from Vite Environment Variables, or default to localhost for development
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
+
 // 1. Create a custom Axios instance
 const api = axios.create({
-    baseURL: 'http://127.0.0.1:8000',
+    baseURL: API_BASE_URL,
     headers: {
         'Content-Type': 'application/json',
     },
@@ -71,7 +74,7 @@ api.interceptors.response.use(
             try {
                 // Call the Django token refresh endpoint
                 const response = await axios.post(
-                    'http://127.0.0.1:8000/api/auth/refresh/',
+                    `${API_BASE_URL}/api/auth/refresh/`,
                     { refresh: refreshToken }
                 );
 
